@@ -1,0 +1,58 @@
+﻿@using GoodHotel.Service.ViewModels.Products;
+@model List<RoomViewModel>
+<header>
+    <nav id="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html">Good Hotel</a></h1>
+            <ul>
+                <li><a href="" class="current">Contact</a></li>
+                <li><a href="abouts">About</a></li>
+                <li><a href="home">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="showcase">
+        <div class="container">
+            <div style=" background-color: blue; height: 700px; width: 400px; margin-left: 350px; margin-top: 10px">
+                <div class=" d-flex">
+                    <h3 style="margin-left: 15px; height: 10px">Number</h3>
+                    <h3 style="margin-left: 50px; height: 10px">Lux</h3>
+                    <h3 style="margin-left: 60px; height: 10px">Place</h3>
+                    <h3 style="margin-left: 60px; height: 10px">Price</h3>
+                </div>
+                @{
+                    foreach (var room in Model)
+                    {
+                        
+                                        <div style="margin-left: 10px; width:380px; height: 40px;  margin-top: 10px;margin-left:10px; margin-right: 20px; background-color: aqua">
+                                            <a asp-controller="contacs" asp-action="get" asp-route-roomId="@room.Id" class=" d-flex">
+                                                <h2 style="margin-left: 15px; margin-top: 10px">@room.room_number</h2>
+                                                @{
+                                        if (room.Is_lux == true)
+                                        {
+                                                                    <h2 style="margin-left: 90px; margin-top: 10px">Yes</h2>
+                                        }
+                                        else
+                                        {
+                                                                    <h2 style="margin-left: 90px; margin-right: 7px; margin-top: 10px">No</h2>
+                                        }
+                                                }
+                                                @{
+                                        if(room.place==0){
+                                                                    <h2 style="margin-left: 60px; margin-top: 10px">Bo'sh</h2>
+                                        }
+                                        else{
+                                                                    <h2 style="margin-left: 60px; margin-right: 7px; margin-top: 10px">Band</h2>
+                                        }
+                                                }
+                                                <h2 style="margin-left: 50px; margin-top: 10px">@room.price$</h2>
+                                            </a>
+                                        </div>
+                        
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</header>
